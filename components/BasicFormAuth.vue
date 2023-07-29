@@ -1,11 +1,7 @@
 <script setup>
-  import { useStoreUser } from "@/store/storeUser";
-
   defineOptions({
     name: "BasicForm",
   });
-
-  const store = useStoreUser();
 
   const form = reactive({
     email: "frontend@test.net",
@@ -21,10 +17,7 @@
 
     setUserToken(data.value.accessToken);
     setUserRefreshToken(data.value.refreshToken);
-    store.setUser({ email: body.email });
     navigateTo("/main");
-
-    console.log();
   };
 </script>
 

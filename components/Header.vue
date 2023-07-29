@@ -8,7 +8,7 @@
   <header class="header">
     <div class="header__topSector">
       <balance-block />
-      <button>log out</button>
+      <button @click="logOut">log out</button>
     </div>
     <Navbar />
   </header>

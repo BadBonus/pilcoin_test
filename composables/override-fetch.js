@@ -1,16 +1,13 @@
 import { useToast } from "vue-toastification";
 
-export const over_useFetch = (url, options) => {
+export const over_fetch = (url, options) => {
   const config = useRuntimeConfig();
   const token = getUserToken();
   const toast = useToast();
 
-  console.log("start");
-
   if (process.server) {
     return;
   }
-  console.log("mid");
 
   const defaultOptions = {
     baseURL: config.public.API_BASIC_URL ?? undefined,
@@ -23,7 +20,6 @@ export const over_useFetch = (url, options) => {
     },
 
     onRequestError({ request, options, error }) {
-      console.log("onRequestError");
       // if (error.value) {
       //   console.log(error.value);
       //   toast.error(error.value);
@@ -31,5 +27,5 @@ export const over_useFetch = (url, options) => {
     ...options,
   };
 
-  return useFetch(url, defaultOptions);
+  return $fetch(url, defaultOptions);
 };

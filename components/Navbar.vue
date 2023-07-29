@@ -12,7 +12,7 @@
   </nav>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
   .navbar {
     display: flex;
     justify-content: space-between;

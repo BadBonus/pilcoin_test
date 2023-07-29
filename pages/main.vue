@@ -1,21 +1,19 @@
 <script setup>
   import { useStoreTournaments } from "@/store/storeTournaments";
+
   const store = useStoreTournaments();
 
-  const tournaments = ref([]);
-
   onMounted(async () => {
-    if (!tournaments.value.length) {
+    if (!store.getTournaments) {
       await store.loadTournaments();
-      tournaments.value = store.getTournaments;
     }
   });
 </script>
 
 <template>
   <main>
-    <ul v-if="tournaments" class="list">
-      <li v-for="el in tournaments" :key="el.id">
+    <ul v-if="store.getTournaments" class="list">
+      <li v-for="el in store.getTournaments" :key="el.id">
         <NuxtLink :to="'/tournament-' + el.slug">
           <Item :img="imgBasicUrl + el.logo" :name="el.name" />
         </NuxtLink>
