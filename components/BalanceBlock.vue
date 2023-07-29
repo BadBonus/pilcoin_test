@@ -12,7 +12,7 @@
     name: "BalanceBlock",
   });
 
-  const props = defineProps<IBalanceBlock>();
+  defineProps<IBalanceBlock>();
 </script>
 
 <template>

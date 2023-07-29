@@ -53,7 +53,11 @@ export const useStoreUser = defineStore('storeUser', {
     getAllBalance: ({user}) => ({
       balance: user?.balance,
       bonus_balance: user?.bonus_balance
-    })
+    }),
+    getName: ({user}) => {
+      if (user) return user.firstname + user.lastname;
+      return null;
+    }
   },
 
   actions: {

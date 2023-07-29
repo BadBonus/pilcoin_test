@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+  defineOptions({
+    name: "newsPage",
+  });
+</script>
 
 <template>
   <div>news</div>

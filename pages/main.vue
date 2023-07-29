@@ -1,5 +1,8 @@
 <script setup>
   import { useStoreTournaments } from "@/store/storeTournaments";
+  defineOptions({
+    name: "mainPage",
+  });
 
   const store = useStoreTournaments();
 

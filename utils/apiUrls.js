@@ -6,4 +6,5 @@ export const auth_info_url = "auth/info";
 export const tournaments_url = "tournament";
 export const getTournament_url = "tournament/TestTournament";
 
+export const getCommentsOfTournament_url = (id) => `/comments/${id}?page=1&rowsPerPage=20`;
 export const imgBasicUrl = "https://cdn.pilcoin.social/_tournament/";

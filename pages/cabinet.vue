@@ -1,5 +1,8 @@
 <script setup>
   import { useStoreUser } from "@/store/storeUser";
+  defineOptions({
+    name: "cabinetPage",
+  });
   const store = useStoreUser();
 </script>
 
