@@ -1,5 +1,5 @@
 export const useStoreUser = defineStore('storeUser', {
-  state: () => ({
+  state: (): {user: null | Object} => ({
     user: null
   }),
 
@@ -8,8 +8,11 @@ export const useStoreUser = defineStore('storeUser', {
   },
 
   actions: {
-    setUser(data: any) {
+    setUser(data: object) {
       this.user = data
+    },
+    setUserInfo(data: Object) {
+      if (this.user) this.user = {...data, ...this.user};
     },
     clearUser() {
       this.user = null

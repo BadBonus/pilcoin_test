@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  css: ["@/assets/styles/global.scss"],
   devtools: {
     enabled: true,
 
@@ -13,23 +14,20 @@ export default defineNuxtConfig({
     }
   },
   modules: [
-    // '@nuxtjs/axios',
     '@vueuse/nuxt',
     '@vueuse/motion/nuxt',
+    '@nuxt/image',
     ['@pinia/nuxt', {
       autoImports: [
-        // automatically imports `defineStore`
-        'defineStore', // import { defineStore } from 'pinia'
-        ['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
+        'defineStore',
+        ['defineStore', 'definePiniaStore'],
       ],
     },
     ],
     [
       '@vee-validate/nuxt',
       {
-        // disable or enable auto imports
         autoImports: true,
-        // Use different names for components
         componentNames: {
           Form: 'VeeForm',
           Field: 'VeeField',
@@ -38,7 +36,5 @@ export default defineNuxtConfig({
         },
       },
     ],
-
   ],
-
 })

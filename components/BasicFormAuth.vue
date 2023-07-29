@@ -14,17 +14,17 @@
 
   const onSubmit = async () => {
     const body = toRaw(form);
-    const request = await useFetch(auth_login_url, {
+    const { data, pending, error, status } = await over_useFetch(auth_login_url, {
       method: "POST",
       body,
-
-      onResponse({ request, response, options }) {
-        setUserToken(response._data.accessToken);
-        setUserRefreshToken(response._data.refreshToken);
-        store.setUser(body);
-        navigateTo("/main");
-      },
     });
+
+    setUserToken(data.value.accessToken);
+    setUserRefreshToken(data.value.refreshToken);
+    store.setUser({ email: body.email });
+    navigateTo("/main");
+
+    console.log();
   };
 </script>
 

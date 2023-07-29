@@ -5,7 +5,7 @@ export default async ({ name: namePage }) => {
 
   const store = useStoreUser();
   const acessToken = localStorage.getItem("token");
-  const refreshToken = localStorage.getItem("setUserRefreshToken");
+  const refreshToken = localStorage.getItem("RefreshToken");
 
   if (!store.getUser && namePage !== "index") {
     return await navigateTo("/");
