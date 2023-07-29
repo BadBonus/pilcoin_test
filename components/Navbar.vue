@@ -17,5 +17,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    a {
+      border-radius: 100px;
+      border: 1px solid black;
+      padding: 4px 8px;
+      display: flex;
+      transition: 0.3s;
+      &:hover {
+        background: black;
+        color: #fff;
+      }
+
+      &.router-link-active {
+        background: black;
+        color: #fff;
+        cursor: default;
+        pointer-events: none;
+      }
+    }
   }
 </style>

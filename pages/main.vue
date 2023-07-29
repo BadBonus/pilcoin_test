@@ -5,8 +5,10 @@
   const tournaments = ref([]);
 
   onMounted(async () => {
-    await store.loadTournaments();
-    tournaments.value = store.getTournaments;
+    if (!tournaments.value.length) {
+      await store.loadTournaments();
+      tournaments.value = store.getTournaments;
+    }
   });
 </script>
 
@@ -14,7 +16,9 @@
   <main>
     <ul v-if="tournaments" class="list">
       <li v-for="el in tournaments" :key="el.id">
-        <Item :img="'https://cdn.pilcoin.social/_tournament/' + el.logo" :name="el.name" />
+        <NuxtLink :to="'/tournament-' + el.slug">
+          <Item :img="imgBasicUrl + el.logo" :name="el.name" />
+        </NuxtLink>
       </li>
     </ul>
   </main>
