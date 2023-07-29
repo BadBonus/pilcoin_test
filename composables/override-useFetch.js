@@ -5,12 +5,9 @@ export const over_useFetch = (url, options) => {
   const token = getUserToken();
   const toast = useToast();
 
-  console.log("start");
-
   if (process.server) {
     return;
   }
-  console.log("mid");
 
   const defaultOptions = {
     baseURL: config.public.API_BASIC_URL ?? undefined,

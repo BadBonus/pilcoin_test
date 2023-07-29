@@ -20,6 +20,36 @@ export const useStoreUser = defineStore('storeUser', {
 
   getters: {
     getUser: (state) => state.user ?? null,
+    getUserForProfile: (state) => {
+      let profile = null;
+      if (state.user) {
+        const {
+          balance,
+          bonus_balance,
+          email,
+          firstname,
+          lastname,
+          middlename,
+          nickname,
+          ref_percent,
+          referalUid
+        } = state.user;
+
+        profile = {
+          balance,
+          bonus_balance,
+          email,
+          firstname,
+          lastname,
+          middlename,
+          nickname,
+          ref_percent,
+          referalUid
+        }
+      }
+
+      return profile;
+    },
     getAllBalance: ({user}) => ({
       balance: user?.balance,
       bonus_balance: user?.bonus_balance

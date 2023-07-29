@@ -6,9 +6,8 @@
   const info = ref(null);
 
   onMounted(async () => {
-    const { data } = await over_useFetch(getTournament_url);
-
-    info.value = data.value;
+    const data = await over_fetch(getTournament_url);
+    info.value = data;
   });
 </script>
 
