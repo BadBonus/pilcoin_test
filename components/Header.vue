@@ -7,7 +7,10 @@
 <template>
   <header class="header">
     <div class="header__topSector">
-      <balance-block />
+      <div>
+        <balance-block />
+        <button @click="showPopupUserInfo">Проверить профиль</button>
+      </div>
       <button @click="logOut">Выход</button>
     </div>
     <Navbar />

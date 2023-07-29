@@ -10,7 +10,7 @@ a {
   text-decoration: none;
 }
 
-button {
+button:not(.Vue-Toastification__close-button) {
   padding: 4;
   margin: 0;
   font-weight: 600;
