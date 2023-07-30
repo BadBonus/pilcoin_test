@@ -2,11 +2,11 @@
   import * as yup from "yup";
   import { useStoreUser } from "@/store/storeUser";
 
-  const store = useStoreUser();
-
   defineOptions({
     name: "CommentForm",
   });
+
+  const emit = defineEmits(["onSubmit"]);
 
   const schema = markRaw(
     yup.object({
@@ -14,13 +14,19 @@
     })
   );
 
+  const store = useStoreUser();
   const comment = ref(null);
+  const isLoading = ref(false);
 
-  const onSubmit = async () => {};
+  const onSubmit = async () => {
+    isLoading.value = true;
+    await emit("onSubmit", comment.value);
+    isLoading.value = false;
+  };
 </script>
 
 <template>
-  <VeeForm :validation-schema="schema" @submit="onSubmit">
+  <VeeForm :class="{ disabled: isLoading }" :validation-schema="schema" @submit="onSubmit">
     <b>{{ store.getName }}</b>
     <br />
     <VeeField v-slot="{ field }" autocomplete="comment" v-model="comment" name="comment" type="textarea">
@@ -28,7 +34,7 @@
     </VeeField>
     <VeeErrorMessage name="comment" />
     <br />
-    <button>Комментировать</button>
+    <button type="submit">Комментировать</button>
   </VeeForm>
 </template>
 

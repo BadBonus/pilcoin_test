@@ -6,10 +6,23 @@
   const info = ref(null);
   const comments = ref(null);
   const isCanComment = ref(null);
+  const isLoadingComments = ref(false);
+
+  const submitCommnet = (comment) => {
+    over_fetch(getTournamentEventComments_url, {
+      body: {
+        comment,
+      },
+      method: "POST",
+    }).then(async () => {
+      const rawCommentsData = await over_fetch(getTournamentEventComments_url);
+      comments.value = rawCommentsData.comments;
+    });
+  };
 
   onMounted(async () => {
     const data = await over_fetch(getTournamentEvent_url);
-    const rawCommentsData = await over_fetch(getCommentsOfTournament_url(data.id));
+    const rawCommentsData = await over_fetch(getTournamentEventComments_url);
     info.value = data;
     comments.value = rawCommentsData.comments;
 
@@ -29,11 +42,16 @@
       <NuxtImg :src="imgBasicUrl + info.logo" />
     </h1>
   </div>
-  <CommentForm :disabled="true" :class="{ tpage__commentForm: true, disabled: !isCanComment }" />
+  <CommentForm @on-submit="submitCommnet" :disabled="true" :class="{ tpage__commentForm: true, disabled: !isCanComment }" />
   <h5 v-if="!isCanComment">Нет доступа к комментариям</h5>
+
+  <CommentsList :class="{ isLoading: isLoadingComments }" :comments="comments" />
 </template>
 
 <style scoped lang="scss">
+  .isLoadingComments {
+    opacity: 0.5;
+  }
   .tournamentPage {
     text-align: center;
   }

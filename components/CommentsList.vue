@@ -41,6 +41,8 @@
     max-width: 500px;
     width: 100%;
     margin: auto;
+    max-height: 500px;
+    overflow-y: scroll;
 
     ul {
       border-left: 2px solid #000;
