@@ -2,10 +2,10 @@
   import { useStoreUser } from "@/store/storeUser";
   import { storeToRefs } from "pinia";
 
-  const { user } = storeToRefs(useStoreUser());
+  const { getUser } = storeToRefs(useStoreUser());
 </script>
 
 <template>
-  <Header v-if="user" />
+  <ClientOnly><Header v-if="getUser" /></ClientOnly>
   <slot />
 </template>

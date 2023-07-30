@@ -1,3 +1,4 @@
+import { ClientOnly } from '../.nuxt/components';
 <script setup>
   defineOptions({
     name: "Header",
