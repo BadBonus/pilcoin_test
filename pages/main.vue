@@ -17,7 +17,7 @@
   <main>
     <ul v-if="store.getTournaments" class="list">
       <li v-for="el in store.getTournaments" :key="el.id">
-        <NuxtLink :to="'/tournament-' + el.slug">
+        <NuxtLink :to="'/tournament'">
           <Item :img="imgBasicUrl + el.logo" :name="el.name" />
         </NuxtLink>
       </li>

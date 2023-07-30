@@ -13,7 +13,7 @@ interface IPagesNames {
   index: Array<number>,
   main: Array<number>,
   news: Array<number>,
-  "tournament-slug": Array<number>
+  "tournament": Array<number>
 };
 
 export const permissions: IPermissionsUser = {
@@ -35,6 +35,7 @@ export const per_isAllowed = (idOfneedePermission: number): string | boolean => 
   const store = useStoreUser();
   return store.getPermissions ? store.getPermissions[idOfneedePermission] : false;
 }
+
 export const perPage_isAllowed = (pageName) => {
   if (process.server) return;
 

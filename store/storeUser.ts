@@ -68,7 +68,7 @@ export const useStoreUser = defineStore('storeUser', {
       bonus_balance: user?.bonus_balance
     }),
     getName: ({user}) => {
-      if (user) return user.firstname + user.lastname;
+      if (user) return user.nickname ?? user.firstname + user.lastname;
       return null;
     },
     getPermissions: ({user}) => user?.role.permissions.reduce((acc: {[key: number]: string}, cur) => {

@@ -5,12 +5,15 @@
 
   const info = ref(null);
   const comments = ref(null);
+  const isCanComment = ref(null);
 
   onMounted(async () => {
-    const data = await over_fetch(getTournament_url);
+    const data = await over_fetch(getTournamentEvent_url);
     const rawCommentsData = await over_fetch(getCommentsOfTournament_url(data.id));
     info.value = data;
     comments.value = rawCommentsData.comments;
+
+    isCanComment.value = per_isAllowed(permissions.can_create_comment);
   });
 </script>
 
@@ -26,8 +29,8 @@
       <NuxtImg :src="imgBasicUrl + info.logo" />
     </h1>
   </div>
-  <CommentForm class="tpage__commentForm" />
-  <CommentsList :comments="comments" />
+  <CommentForm :disabled="true" :class="{ tpage__commentForm: true, disabled: !isCanComment }" />
+  <h5 v-if="!isCanComment">Нет доступа к комментариям</h5>
 </template>
 
 <style scoped lang="scss">
@@ -45,5 +48,9 @@
   .tpage__commentForm {
     margin: auto;
     max-width: 500px;
+  }
+  h5 {
+    transform: translateY(-120px);
+    text-align: center;
   }
 </style>
