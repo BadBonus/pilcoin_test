@@ -34,4 +34,8 @@
   </VeeForm>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  button {
+    margin-top: 8px;
+  }
+</style>

@@ -10,8 +10,21 @@ interface IUser {
   recover_token: any,
   ref_percent: number,
   referalUid: string,
-  role: Object,
+  role: IUserRole,
 }
+
+interface IUserRole {
+  name: string,
+  permissions: Array<IPermission>,
+  status: string
+}
+
+interface IPermission {
+  action: string,
+  id: number,
+  object: Object
+}
+
 
 export const useStoreUser = defineStore('storeUser', {
   state: (): {user: null | IUser} => ({
@@ -57,7 +70,11 @@ export const useStoreUser = defineStore('storeUser', {
     getName: ({user}) => {
       if (user) return user.firstname + user.lastname;
       return null;
-    }
+    },
+    getPermissions: ({user}) => user?.role.permissions.reduce((acc: {[key: number]: string}, cur) => {
+      acc[cur.id] = cur.action;
+      return acc;
+    }, {})
   },
 
   actions: {

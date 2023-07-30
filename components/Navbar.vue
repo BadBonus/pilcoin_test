@@ -7,7 +7,7 @@
 <template>
   <nav class="navbar">
     <NuxtLink to="/main"> Турниры </NuxtLink>
-    <NuxtLink to="/news"> Новости </NuxtLink>
+    <NuxtLink v-if="per_isAllowed(permissions.can_read_news)" to="/news"> Новости </NuxtLink>
     <NuxtLink to="/cabinet"> Кабинет </NuxtLink>
   </nav>
 </template>
