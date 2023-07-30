@@ -11,7 +11,8 @@ export const over_fetch = (url, options) => {
   }
 
   const defaultOptions = {
-    baseURL: config.public.API_BASIC_URL ?? undefined,
+    // for demonstration purposes I switched env.variable to public var
+    baseURL: base_api ?? undefined,
     headers: token ? { Authorization: `Bearer ${token}` } : {},
 
     onResponseError({ request, response, options }) {

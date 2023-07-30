@@ -1,3 +1,4 @@
+export const base_api = "https://api.pilcoin.social/api/";
 export const auth_reg_url = "auth/register";
 export const auth_login_url = "auth/login";
 export const auth_refresh_url = "auth/refresh";

@@ -11,7 +11,7 @@ export const over_useFetch = (url, options) => {
   }
 
   const defaultOptions = {
-    baseURL: config.public.API_BASIC_URL ?? undefined,
+    baseURL: base_api ?? undefined,
     headers: token ? { Authorization: `Bearer ${token}` } : {},
 
     onResponseError({ request, response, options }) {
