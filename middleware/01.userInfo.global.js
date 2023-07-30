@@ -6,7 +6,6 @@ export default async ({ name: namePage }) => {
   const store = useStoreUser();
 
   if (namePage !== "index" && store.getUser === null) {
-    const { data } = await over_useFetch(auth_info_url);
-    store.setUserInfo(data.value);
+    store.loadUserInfo();
   }
 };

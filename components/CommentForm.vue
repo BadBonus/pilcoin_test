@@ -18,15 +18,16 @@
   const comment = ref(null);
   const isLoading = ref(false);
 
-  const onSubmit = async () => {
+  const onSubmit = async (values, { resetForm }) => {
     isLoading.value = true;
     await emit("onSubmit", comment.value);
     isLoading.value = false;
+    resetForm();
   };
 </script>
 
 <template>
-  <VeeForm :class="{ disabled: isLoading }" :validation-schema="schema" @submit="onSubmit">
+  <VeeForm ref="form" :class="{ disabled: isLoading }" :validation-schema="schema" @submit="onSubmit">
     <b>{{ store.getName }}</b>
     <br />
     <VeeField v-slot="{ field }" autocomplete="comment" v-model="comment" name="comment" type="textarea">

@@ -25,7 +25,7 @@
 <template>
   <div class="listOfComments">
     <h2>Комментарии</h2>
-    <ul v-if="props.comments">
+    <ul class="setOfComments" v-if="props.comments">
       <li v-for="{ id, user, comment } in props.comments" :key="id" class="comment">
         <b>{{ user.nickname }}</b>
         <br />
@@ -41,8 +41,12 @@
     max-width: 500px;
     width: 100%;
     margin: auto;
-    max-height: 500px;
-    overflow-y: scroll;
+    margin-top: 12px;
+
+    .setOfComments {
+      max-height: 500px;
+      overflow-y: scroll;
+    }
 
     ul {
       border-left: 2px solid #000;

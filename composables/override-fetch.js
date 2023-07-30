@@ -18,6 +18,8 @@ export const over_fetch = (url, options) => {
       if (response.status === 401) {
         toast.error(response.statusText);
         return router.push({ path: "/" });
+      } else {
+        toast.error(response.statusText + ": " + response._data?.message[0]);
       }
     },
 

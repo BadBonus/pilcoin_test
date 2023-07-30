@@ -10,3 +10,5 @@ export const getCommentsOfTournament_url = (id) => `/comments/${id}?page=1&rowsP
 export const imgBasicUrl = "https://cdn.pilcoin.social/_tournament/";
 export const getTournamentEvent_url = "betting/Test-2022-NAVI-VS-VP";
 export const getTournamentEventComments_url = "betting/Test-2022-NAVI-VS-VP/comment";
+
+export const makeBet_url = "/bets";

@@ -87,5 +87,10 @@ export const useStoreUser = defineStore('storeUser', {
     clearStore() {
       this.user = null
     },
+    async loadUserInfo() {
+      const {data} = await over_useFetch(auth_info_url);
+      this.setUserInfo(data.value);
+      return data.value;
+    }
   },
 })
